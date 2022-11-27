@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"reflect"
+	"strconv"
 	"unicode/utf8"
 )
 
@@ -104,4 +105,23 @@ func main() {
 	fmt.Println(u)
 	fmt.Println(reflect.TypeOf(u))
 	// https://stackoverflow.com/questions/59042646/whats-the-difference-between-uint-and-uintptr-in-golang
+
+	// string to int converting, make sure that you import "strconv"
+	s := "123"
+	fmt.Printf("%T, %v\n", s, s)
+	// num, err := strconv.Atoi(s)
+	num, err := strconv.ParseInt(s, 10, 0)
+	if err != nil {
+		fmt.Println("some error occurred while conversion")
+	} else {
+		fmt.Println("no error, successfully converted!")
+	}
+	fmt.Printf("%T, %v\n", num, num)
+
+	// int to string conversion, import "strconv" & look that Itoa returns only one value
+	h := 123
+	fmt.Printf("%T, %v\n", h, h)
+	// t := strconv.Itoa(h)
+	t := strconv.FormatInt(int64(h), 10)
+	fmt.Printf("%T, %v\n", t, t)
 }
