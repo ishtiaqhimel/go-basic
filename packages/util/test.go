@@ -1,4 +1,4 @@
-package myPackages
+package util
 
 // variadic function usage: takes two or more arguments & finds the maximum among them
 func Max(a int, b int, args ...int) int {
