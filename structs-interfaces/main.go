@@ -166,8 +166,9 @@ func main() {
 
 	// Embedded Types, description is on the top of structs
 	a := Android{Model: "1000", Person: Person{Name: "Ishtiaq"}}
-	a.talk()
 	a.Person.talk()
+	a.talk()
+	// The is-a relationship works this way intuitively: People can talk, an android is a person, therefore an android can talk.
 
 	// Intefaces : Interfaces are named collections of method signatures.
 	c := circle{radius: 5}
