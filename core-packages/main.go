@@ -59,7 +59,7 @@ func main() {
 
 	// see the following:
 	// fileIO part for file handling
-	// code frequently used part for sorting array, slices or struct
+	// code frequently used part for sorting array, slices or arbitrary data
 	// mutex example for Mutexes
 	// error for error handling
 }
