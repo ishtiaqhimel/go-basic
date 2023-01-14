@@ -7,20 +7,6 @@ import (
 	"unicode/utf8"
 )
 
-/*
-The following are the basic types in Go
-
-- bool
-- numeric types
-	- int8, int16, int32, int64, int (signed integers)
-	- uint8, uint16, uint32, uint32, uint64, uint, uintptr (unsigned integers)
-	- float32, float64
-	- complex64, complex128
-	- byte (alias for uint8)
-	- rune (alias for int32)
--string
-*/
-
 func main() {
 	// bool
 	// && (and), || (or), ! (not)

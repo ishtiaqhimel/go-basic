@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 
-// we can move the variable outside of the main function
-// This means that other functions can access this variable
-// var x string = "Hello World"
+// Global variable
+var X int
+var Y int = 7
 
 /*
 we can enclose them in parenthesis like this.
@@ -18,7 +18,25 @@ var (
 	id        int    = 10028
 )
 
+/*
+Constant in Go
+Constants are the fixed values that cannot be changed once declared.
+In Go, we use the const keyword to create constant variables. For example,
+
+initial Value:
+const employeeId = 10028
+
+Error! Constants cannot be changed:
+emloyeeId = 10028
+
+By the way, we cannot use the shorthand notation := to create constants. For example,
+Error! Code
+const employee := 10028
+*/
+
 func main() {
+	fmt.Println(X, Y)
+
 	// declarring first, then assigning value, default is always zero
 	var i int
 	i = 5
