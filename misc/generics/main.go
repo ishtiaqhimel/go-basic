@@ -43,8 +43,8 @@ func main() {
 	show(mp)
 
 	d := data[float32]{
-		a: 9,
-		b: 8,
+		a: 9.8,
+		b: 8.1,
 	}
 	fmt.Println(d.area())
 }
