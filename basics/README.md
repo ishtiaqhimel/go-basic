@@ -103,11 +103,43 @@ A type declaration binds an identifier, the type name, to a type. Type declarati
 A type parameter list declares the type parameters of a generic function or type declaration. The type parameter list looks like an ordinary function parameter list except that the type parameter names must all be present and the list is enclosed in square brackets rather than parentheses.
 
 ### Types (need to complete)
-- Boolean Type
-- Numeric Types
-- String Types
-- Array Types
-- Slice Types
+- **Boolean Type:** A boolean type represents the set of Boolean truth values denoted by the predeclared constants `true` and `false`. The predeclared boolean type is `bool`; it is a defined type.
+- **Numeric Types:** An integer, floating-point, or complex type represents the set of integer, floating-point, or complex values, respectively. They are collectively called numeric types.
+```go
+uint8       the set of all unsigned  8-bit integers (0 to 255)
+uint16      the set of all unsigned 16-bit integers (0 to 65535)
+uint32      the set of all unsigned 32-bit integers (0 to 4294967295)
+uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
+
+int8        the set of all signed  8-bit integers (-128 to 127)
+int16       the set of all signed 16-bit integers (-32768 to 32767)
+int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
+int64       the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)
+
+float32     the set of all IEEE-754 32-bit floating-point numbers
+float64     the set of all IEEE-754 64-bit floating-point numbers
+
+complex64   the set of all complex numbers with float32 real and imaginary parts
+complex128  the set of all complex numbers with float64 real and imaginary parts
+
+byte        alias for uint8
+rune        alias for int32
+
+// there is also a set of predeclared integer types with implementation-specific sizes:
+
+uint     either 32 or 64 bits
+int      same size as uint
+uintptr  an unsigned integer large enough to store the uninterpreted bits of a pointer value
+
+// Explicit conversions are required when different numeric types are mixed in an expression or assignment. For instance, int32 and int are not the same type even though they may have the same size on a particular architecture.
+```
+- **String Types:** A string type represents the set of string values. A string value is a (possibly empty) sequence of bytes. The number of bytes is called the length of the string and is never negative. Strings are immutable: once created, it is impossible to change the contents of a string. The predeclared string type is string; it is a defined type. If s[i] is the i'th byte of a string, &s[i] is invalid.
+
+- **Array Types:** An array is a numbered sequence of elements of a single type, called the element type. The number of elements is called the length of the array and is never negative. Array types are always one-dimensional but may be composed to form multi-dimensional types.
+- **Slice Types:** A slice is a descriptor for a contiguous segment of an underlying array and provides access to a numbered sequence of elements from that array. A slice type denotes the set of all slices of arrays of its element type. The number of elements is called the length of the slice and is never negative. The value of an uninitialized slice is `nil`. The slice index of a given element may be less than the index of the same element in the underlying array.</br>
+A slice, once initialized, is always associated with an underlying array that holds its elements. A slice therefore shares storage with its array and with other slices of the same array; by contrast, distinct arrays always represent distinct storage.</br>
+The array underlying a slice may extend past the end of the slice. The capacity is a measure of that extent: it is the sum of the length of the slice and the length of the array beyond the slice; a slice of length up to that capacity can be created by slicing a new one from the original slice. The capacity of a slice a can be discovered using the built-in function `cap(a)`.</br>
+A new, initialized slice value for a given element type `T` may be made using the built-in function `make`, which takes a slice type and parameters specifying the length and optionally the capacity. A slice created with make always allocates a new, hidden array to which the returned slice value refers. That is, executing `make([]T, length, capacity)`. Produces the same slice as allocating an array and slicing it, so these two expressions are equivalent: `make([]int, 50, 100)` and `new([100]int)[0:50]`. Like arrays, slices are always one-dimensional but may be composed to construct higher-dimensional objects. With arrays of arrays, the inner arrays are, by construction, always the same length; however with slices of slices (or arrays of slices), the inner lengths may vary dynamically. Moreover, the inner slices must be initialized individually.
 - Struct Types
 - Pointer Types
 - Interface Types
@@ -116,18 +148,6 @@ A type parameter list declares the type parameters of a generic function or type
   - General Interfaces
 - Map Types
 - Channel Types
-
-## Data Types
-The basic data types in Golang are $-$
-| Data Types | Description | Variations |
-|:--- |:--- |:---|
-| `int` | Integer numbers | int8, int16, int32, int64, int (signed integers), uint8, uint16, uint32, uint32, uint64, uint, uintptr (unsigned integers) |
-| `float` | Numbers with decimal points | float32, float64 |
-| `complex` | Complex numbers | complex64, complex128 |
-| `string` | Sequence of characters (a slice of bytes in Go) |  |
-| `bool` | Either true or false | |
-| `byte` | A byte (8 bits) of non-negative integers (alias for uint8) | |
-| `rune` | Used for characters. Internally used as 32-bit integers (alias for int32) |  |
 
 ## I/O in Go
 - Using `fmt` package
