@@ -140,14 +140,18 @@ uintptr  an unsigned integer large enough to store the uninterpreted bits of a p
 A slice, once initialized, is always associated with an underlying array that holds its elements. A slice therefore shares storage with its array and with other slices of the same array; by contrast, distinct arrays always represent distinct storage.</br>
 The array underlying a slice may extend past the end of the slice. The capacity is a measure of that extent: it is the sum of the length of the slice and the length of the array beyond the slice; a slice of length up to that capacity can be created by slicing a new one from the original slice. The capacity of a slice a can be discovered using the built-in function `cap(a)`.</br>
 A new, initialized slice value for a given element type `T` may be made using the built-in function `make`, which takes a slice type and parameters specifying the length and optionally the capacity. A slice created with make always allocates a new, hidden array to which the returned slice value refers. That is, executing `make([]T, length, capacity)`. Produces the same slice as allocating an array and slicing it, so these two expressions are equivalent: `make([]int, 50, 100)` and `new([100]int)[0:50]`. Like arrays, slices are always one-dimensional but may be composed to construct higher-dimensional objects. With arrays of arrays, the inner arrays are, by construction, always the same length; however with slices of slices (or arrays of slices), the inner lengths may vary dynamically. Moreover, the inner slices must be initialized individually.
-- Struct Types
-- Pointer Types
-- Interface Types
-  - Basic Interfaces
-  - Embedded Interfaces
-  - General Interfaces
-- Map Types
-- Channel Types
+- **Struct Types:** A struct is a sequence of named elements, called fields, each of which has a name and a type. Field names may be specified explicitly (IdentifierList) or implicitly (EmbeddedField). Within a struct, non-blank field names must be unique. A field declared with a type but no explicit field name is called an embedded field. An embedded field must be specified as a type name T or as a pointer to a non-interface type name *T, and T itself may not be a pointer type. The unqualified type name acts as the field name.
+- **Pointer Types:** A pointer type denotes the set of all pointers to variables of a given type, called the base type of the pointer. The value of an uninitialized pointer is `nil`.
+- **Function Type:** A function type denotes the set of all functions with the same parameter and result types. The value of an uninitialized variable of function type is nil.
+</br>Within a list of parameters or results, the names (IdentifierList) must either all be present or all be absent. If present, each name stands for one item (parameter or result) of the specified type and all non-blank names in the signature must be unique. If absent, each type stands for one item of that type. Parameter and result lists are always parenthesized except that if there is exactly one unnamed result it may be written as an unparenthesized type.
+</br>The final incoming parameter in a function signature may have a type prefixed with `...`. A function with such a parameter is called variadic and may be invoked with zero or more arguments for that parameter.
+- **Interface Types:** An interface type defines a type set. A variable of interface type can store a value of any type that is in the type set of the interface. Such a type is said to implement the interface. The value of an uninitialized variable of interface type is `nil`.
+</br>An interface type is specified by a list of interface elements. An interface element is either a method or a type element, where a type element is a union of one or more type terms. A type term is either a single type or a single underlying type.
+  - **Basic Interfaces:** In its most basic form an interface specifies a (possibly empty) list of methods. The type set defined by such an interface is the set of types which implement all of those methods, and the corresponding method set consists exactly of the methods specified by the interface. Interfaces whose type sets can be defined entirely by a list of methods are called basic interfaces.
+  - **Embedded Interfaces:** 
+  - **General Interfaces:** 
+- **Map Types:** 
+- **Channel Types:** 
 
 ## I/O in Go
 - Using `fmt` package

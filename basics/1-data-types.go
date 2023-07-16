@@ -184,6 +184,113 @@ func typeConversion() {
 	fmt.Println(reflect.TypeOf(ss), ss)
 }
 
+// student struct having fields
+type student struct {
+	name      string
+	age       int32
+	courses   []course
+	*moreInfo // embedding
+}
+
+// course struct having 2 fields
+type course struct {
+	name string
+	code int32
+}
+
+type moreInfo struct {
+	address string
+	email   string
+}
+
+func structType() {
+	ishtiaq := student{
+		name: "Ishtiaq",
+		age:  25,
+		courses: []course{
+			{
+				name: "Algo",
+				code: 123,
+			},
+			{
+				name: "DS",
+				code: 125,
+			},
+		},
+	}
+
+	raju := student{
+		name: "Raju",
+		age:  25,
+		courses: []course{
+			{
+				name: "CN",
+				code: 124,
+			},
+			{
+				name: "DS",
+				code: 125,
+			},
+		},
+	}
+
+	// embedded fields
+	ishtiaq.moreInfo = new(moreInfo) // to avoid nil pointer dereference
+	ishtiaq.address = "Dhaka"
+	ishtiaq.email = "ishtiaq@gmail.com"
+
+	students := []student{ishtiaq, raju}
+
+	// we can access the field values using the dot(.) operator, courses is a list or slice, so print like this.
+	for i, s := range students {
+		fmt.Println(i, s.name, s.age)
+		for j, c := range s.courses {
+			fmt.Println(i, j, c.name, c.code)
+		}
+		if s.moreInfo != nil {
+			fmt.Println(s.address, s.email)
+		}
+		fmt.Println()
+
+	}
+
+	// %v prints only the values, if we need the name of the fields, we can use %+v to achieve that
+	fmt.Printf("%+v\n", students)
+	fmt.Println(students)
+
+	// other ways of declaration
+	// initially have their zero values
+	var st student
+	fmt.Printf("%+v\n", st)
+
+	// return student pointer and initially have their zero values
+	stp := new(student)
+	fmt.Printf("%+v\n", *stp)
+}
+
+func pointerType() {
+	var a *int
+	a = intPtr(8)
+	fmt.Println(*a)
+
+	// *[4]int -> array pointer
+}
+
+func intPtr(a int) *int {
+	return &a
+}
+
+func functionType() {
+	// func()
+	// func(x int) int
+	// func(a, _ int, z float32) bool
+	// func(a, b int, z float32) (bool)
+	// func(prefix string, values ...int)
+	// func(a, b int, z float64, opt ...interface{}) (success bool)
+	// func(int, int, float64) (float64, *[]int)
+	// func(n int) func(p *T)
+}
+
 func main() {
 	fmt.Println("Boolean Type:")
 	booleanType()
@@ -203,6 +310,18 @@ func main() {
 
 	fmt.Println("Slice Type:")
 	sliceType()
+	fmt.Println()
+
+	fmt.Println("Struct Type:") // more discussion in '8-struct.go'
+	structType()
+	fmt.Println()
+
+	fmt.Println("Pointer Type:")
+	pointerType()
+	fmt.Println()
+
+	fmt.Println("Function Type:") // more discussion in '7-function.go'
+	functionType()
 	fmt.Println()
 
 	// Type Conversion
