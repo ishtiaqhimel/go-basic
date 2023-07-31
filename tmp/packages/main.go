@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/ishtiaqhimel/go-basic/packages/util"
+	"github.com/ishtiaqhimel/go-basic/tmp/packages/util"
 )
 
 func main() {
