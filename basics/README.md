@@ -148,10 +148,10 @@ A new, initialized slice value for a given element type `T` may be made using th
 - **Interface Types:** An interface type defines a type set. A variable of interface type can store a value of any type that is in the type set of the interface. Such a type is said to implement the interface. The value of an uninitialized variable of interface type is `nil`.
 </br>An interface type is specified by a list of interface elements. An interface element is either a method or a type element, where a type element is a union of one or more type terms. A type term is either a single type or a single underlying type.
   - **Basic Interfaces:** In its most basic form an interface specifies a (possibly empty) list of methods. The type set defined by such an interface is the set of types which implement all of those methods, and the corresponding method set consists exactly of the methods specified by the interface. Interfaces whose type sets can be defined entirely by a list of methods are called basic interfaces.
-  - **Embedded Interfaces:** 
-  - **General Interfaces:** 
-- **Map Types:** 
-- **Channel Types:** 
+  - **Embedded Interfaces:** In a slightly more general form an interface T may use a (possibly qualified) interface type name E as an interface element. This is called embedding interface E in T. 
+  - **General Interfaces:** In their most general form, an interface element may also be an arbitrary type term T, or a term of the form ~T specifying the underlying type T, or a union of terms t1|t2|…|tn. 
+- **Map Types:** A map is an unordered group of elements of one type, called the element type, indexed by a set of unique keys of another type, called the key type. The value of an uninitialized map is nil.
+- **Channel Types:** A channel provides a mechanism for concurrently executing functions to communicate by sending and receiving values of a specified element type. The value of an uninitialized channel is nil.
 
 ## I/O in Go
 - Using `fmt` package

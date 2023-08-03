@@ -55,6 +55,8 @@ fun main() {
     - Type interface
     - Type casting
     - Package, imports and exports
+        - IO 
+        - Template (text)
     - Errors, Panic, Recover
     - Testing
 - Concurrency

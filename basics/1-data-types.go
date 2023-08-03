@@ -324,6 +324,12 @@ func main() {
 	functionType()
 	fmt.Println()
 
+	fmt.Println("Interface Type:") // discussion in '9-interface.go'
+
+	fmt.Println("Map Type:") // discussion in '6-array-slice-maps.go'
+
+	fmt.Println("Channel Type:") // discussion in 'Channel file'
+
 	// Type Conversion
 	fmt.Println("Type Conversion:")
 	typeConversion()
