@@ -312,7 +312,7 @@ func main() {
 	sliceType()
 	fmt.Println()
 
-	fmt.Println("Struct Type:") // more discussion in '8-struct.go'
+	fmt.Println("Struct Type:") // more discussion in '9-struct.go'
 	structType()
 	fmt.Println()
 
@@ -320,13 +320,13 @@ func main() {
 	pointerType()
 	fmt.Println()
 
-	fmt.Println("Function Type:") // more discussion in '7-function.go'
+	fmt.Println("Function Type:") // more discussion in '8-function.go'
 	functionType()
 	fmt.Println()
 
-	fmt.Println("Interface Type:") // discussion in '9-interface.go'
+	fmt.Println("Interface Type:") // discussion in '10-interface.go'
 
-	fmt.Println("Map Type:") // discussion in '6-array-slice-maps.go'
+	fmt.Println("Map Type:") // discussion in '7-maps.go'
 
 	fmt.Println("Channel Type:") // discussion in 'Channel file'
 

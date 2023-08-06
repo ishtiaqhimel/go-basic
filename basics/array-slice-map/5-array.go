@@ -12,7 +12,7 @@ func main() {
 	}
 	fmt.Println(ara)
 
-	// assigning values while declaring the array
+	// assigning values while declaring the array (short hand declaration)
 	arr := [10]int{20, 33, 30, 10, 34}
 	fmt.Println(arr)
 

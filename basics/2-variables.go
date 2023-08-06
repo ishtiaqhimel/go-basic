@@ -37,13 +37,16 @@ const employee := 10028
 func main() {
 	fmt.Println(X, Y)
 
+	// Declaring a single variable:
 	// declarring first, then assigning value, default is always zero
 	var i int
 	i = 5
 
+	// Declaring a variable with an initial value:
 	// we're declaring a variable & assigning the value at the same time
 	var j int = 10
 
+	// Type inference:
 	// if we don't mention the type, then it'll see the value & assign the type, string for this instance
 	var name = "Ishtiaq"
 	fmt.Println(i, j, name)
