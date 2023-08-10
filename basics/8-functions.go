@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func printName(s string) {
 	fmt.Println("My name is", s)
@@ -38,6 +41,17 @@ func partialSum(x int) func(int) int {
 	return func(y int) int {
 		return sum(x, y)
 	}
+}
+
+func simple(a func(a, b int) int) {
+	fmt.Println(a(60, 7))
+}
+
+func first() {
+	fmt.Println("1st")
+}
+func second() {
+	fmt.Println("2nd")
 }
 
 func main() {
@@ -81,6 +95,11 @@ func main() {
 	partial := partialSum(3)
 	fmt.Println(partial(7))
 
+	f := func(a, b int) int {
+		return a + b
+	}
+	simple(f)
+
 	// recursion
 	var fib func(n int) int
 
@@ -91,4 +110,20 @@ func main() {
 		return fib(n-1) + fib(n-2)
 	}
 	fmt.Println(fib(7))
+
+	// Defer : defer schedules a function call to be run after the function completes. Consider the following example:
+	defer second()
+	first()
+	// This program prints 1st followed by 2nd. Basically defer moves the call to second to the end of the function:
+
+	// defer is often used when resources need to be freed in some way. For example when we open a file we need to make sure to close it later. With defer:
+	myFile, err := os.Open("myFile.txt")
+	defer myFile.Close()
+	if err != nil {
+		panic(err) //  the panic function basically causes a run time error
+	}
+	// This has 3 advantages:
+	// (1) it keeps our Close call near our Open call so it's easier to understand,
+	// (2) if our function had multiple return statements (perhaps one in an if and one in an else) Close will happen before both of them and
+	// (3) deferred functions are run even if a run-time panic occurs.
 }
