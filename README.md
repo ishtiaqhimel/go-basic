@@ -52,7 +52,7 @@ fun main() {
     - Array, slice, maps
     - Functions (multiple/named returns, variadic, closure)
     - Structs
-    - Type interface
+    - Type inference
     - Type casting
     - Package, imports and exports
         - IO 
